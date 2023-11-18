@@ -11,7 +11,7 @@ int main(int arg_cnt, char **arg_val)
 {
 	char *string = NULL;
 	char **executable = NULL;
-	int code = 0;
+	int code = 0, k;
 	(void) arg_cnt;
 
 	while (1)
@@ -23,10 +23,11 @@ int main(int arg_cnt, char **arg_val)
 				write(STDOUT_FILENO, "\n", 1);
 			return (code);
 		}
+		k++;
 		executable = sep_strings(string);
 		if (!executable)
 			continue;
-		code = _execute(executable, arg_val);
+		code = _execute(executable, arg_val, k);
 	}
 
 	return (0);
